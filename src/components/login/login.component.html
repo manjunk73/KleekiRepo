@@ -20,7 +20,6 @@
 
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
-            <label for="username">Email</label>
             <input
               type="text"
               id="username"
@@ -30,12 +29,11 @@
               [class.error]="username?.invalid && username?.touched"
             />
             @if (username?.invalid && username?.touched) {
-              <span class="error-message">Email is required</span>
+              <span class="error-message"> Enter your Email</span>
             }
           </div>
 
           <div class="form-group">
-            <label for="password">Password</label>
             <div class="password-wrapper">
               <input
                 [type]="showPassword ? 'text' : 'password'"
@@ -51,7 +49,7 @@
             </div>
             @if (password?.invalid && password?.touched) {
               @if (password?.errors?.['required']) {
-                <span class="error-message">Password is required</span>
+                <span class="error-message">Enter your Password</span>
               }
               @if (password?.errors?.['minlength']) {
                 <span class="error-message">Password must be at least 6 characters</span>
