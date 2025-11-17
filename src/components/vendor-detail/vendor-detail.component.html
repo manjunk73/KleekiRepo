@@ -1,0 +1,75 @@
+<div class="vendor-detail-container">
+  @if (loading) {
+    <div class="loading">Loading vendor details...</div>
+  } @else if (vendor) {
+    <div class="vendor-detail-header">
+      <button class="back-btn" (click)="goBack()">← Back to Vendors</button>
+      <h1>{{ vendor.name }}</h1>
+    </div>
+
+    <div class="vendor-detail-content">
+      <div class="detail-main">
+        <div class="vendor-image-section">
+          <img [src]="vendor.image" [alt]="vendor.name" class="vendor-image" />
+          <div class="rating-section">
+            <span class="star">★</span>
+            <span class="rating-text">{{ vendor.rating }} ({{ vendor.reviewCount }} reviews)</span>
+          </div>
+        </div>
+
+        <div class="vendor-info">
+          <div class="info-card">
+            <h3>About</h3>
+            <p>{{ vendor.about }}</p>
+          </div>
+
+          <div class="info-card">
+            <h3>Category</h3>
+            <p class="category-badge">{{ vendor.category }}</p>
+          </div>
+
+          <div class="info-card">
+            <h3>Location</h3>
+            <p>📍 {{ vendor.location }}</p>
+          </div>
+
+          <div class="info-card">
+            <h3>Availability</h3>
+            <p>{{ vendor.availability }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-sidebar">
+        <div class="contact-card">
+          <h3>Contact Information</h3>
+          <div class="contact-item">
+            <span class="label">Email</span>
+            <a [href]="'mailto:' + vendor.email">{{ vendor.email }}</a>
+          </div>
+          <div class="contact-item">
+            <span class="label">Phone</span>
+            <a [href]="'tel:' + vendor.phone">{{ vendor.phone }}</a>
+          </div>
+          <div class="contact-item">
+            <span class="label">Website</span>
+            <a [href]="vendor.website" target="_blank">Visit Website</a>
+          </div>
+        </div>
+
+        <div class="services-card">
+          <h3>Services</h3>
+          <div class="services-list">
+            @for (service of vendor.services; track service) {
+              <span class="service-tag">{{ service }}</span>
+            }
+          </div>
+        </div>
+
+        <button class="action-btn">Contact Vendor</button>
+      </div>
+    </div>
+  } @else {
+    <div class="error">Vendor not found</div>
+  }
+</div>
