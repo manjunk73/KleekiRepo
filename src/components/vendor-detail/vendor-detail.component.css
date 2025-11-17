@@ -27,6 +27,18 @@
   border-color: #cbd5e0;
 }
 
+.back-link {
+  cursor: pointer;
+  color: #1a202c;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.back-link:hover {
+  color: #4299e1;
+}
+
 .vendor-detail-header h1 {
   font-size: 2.5rem;
   color: #1a202c;
@@ -125,6 +137,66 @@
   font-size: 0.9rem;
 }
 
+.portfolio-section {
+  width: calc(100% + 350px + 2rem);
+  margin-top: 2rem;
+  margin-right: calc(-350px - 2rem);
+}
+
+.portfolio-card {
+  width: 100%;
+}
+
+.portfolio-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0;
+}
+
+.portfolio-tab {
+  padding: 0.75rem 1.25rem;
+  background: transparent;
+  border: none;
+  color: #718096;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  position: relative;
+  top: 2px;
+}
+
+.portfolio-tab:hover {
+  color: #1a202c;
+}
+
+.portfolio-tab.active {
+  color: #1a202c;
+  border-bottom-color: #1a202c;
+}
+
+.portfolio-content {
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portfolio-list {
+  width: 100%;
+}
+
+.placeholder {
+  text-align: center;
+  color: #a0aec0;
+  font-size: 1rem;
+  margin: 2rem 0;
+}
+
 .detail-sidebar {
   display: flex;
   flex-direction: column;
@@ -206,7 +278,7 @@
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s;
-  margin-top: auto;
+  /* margin-top: auto; */
 }
 
 .action-btn:hover {

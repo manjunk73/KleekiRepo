@@ -18,6 +18,7 @@ export class VendorDetailComponent implements OnInit {
 
   vendor: VendorDetail | null = null;
   loading = false;
+  activeTab: 'photos' | 'videos' | 'albums' = 'photos';
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -42,5 +43,9 @@ export class VendorDetailComponent implements OnInit {
 
   goBack(): void {
     this.router.navigate(['/vendors']);
+  }
+
+  selectTab(tab: 'photos' | 'videos' | 'albums'): void {
+    this.activeTab = tab;
   }
 }

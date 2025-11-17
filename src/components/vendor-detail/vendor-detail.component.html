@@ -3,11 +3,12 @@
     <div class="loading">Loading vendor details...</div>
   } @else if (vendor) {
     <div class="vendor-detail-header">
-      <button class="back-btn" (click)="goBack()">← Back to Vendors</button>
       <h1>{{ vendor.name }}</h1>
+      <a class="back-link" (click)="goBack()">← Back</a>
     </div>
 
     <div class="vendor-detail-content">
+      
       <div class="detail-main">
         <div class="vendor-image-section">
           <img [src]="vendor.image" [alt]="vendor.name" class="vendor-image" />
@@ -22,21 +23,52 @@
             <h3>About</h3>
             <p>{{ vendor.about }}</p>
           </div>
+        </div>
 
-          <div class="info-card">
-            <h3>Category</h3>
-            <p class="category-badge">{{ vendor.category }}</p>
+        <div class="portfolio-section">
+          <div class="info-card portfolio-card">
+            <h3>Portfolio</h3>
+            <div class="portfolio-tabs">
+              <button 
+                class="portfolio-tab" 
+                [class.active]="activeTab === 'photos'"
+                (click)="selectTab('photos')">
+                📷 Photos
+              </button>
+              <button 
+                class="portfolio-tab" 
+                [class.active]="activeTab === 'videos'"
+                (click)="selectTab('videos')">
+                🎥 Videos
+              </button>
+              <button 
+                class="portfolio-tab" 
+                [class.active]="activeTab === 'albums'"
+                (click)="selectTab('albums')">
+                📁 Albums
+              </button>
+            </div>
+            <div class="portfolio-content">
+              @if (activeTab === 'photos') {
+                <div class="portfolio-list">
+                  <p class="placeholder">📷 Photo gallery coming soon...</p>
+                </div>
+              }
+              @if (activeTab === 'videos') {
+                <div class="portfolio-list">
+                  <p class="placeholder">🎥 Video gallery coming soon...</p>
+                </div>
+              }
+              @if (activeTab === 'albums') {
+                <div class="portfolio-list">
+                  <p class="placeholder">📁 Albums gallery coming soon...</p>
+                </div>
+              }
+            </div>
           </div>
+        </div>
 
-          <div class="info-card">
-            <h3>Location</h3>
-            <p>📍 {{ vendor.location }}</p>
-          </div>
-
-          <div class="info-card">
-            <h3>Availability</h3>
-            <p>{{ vendor.availability }}</p>
-          </div>
+         <div class="vendor-info">
         </div>
       </div>
 
@@ -63,9 +95,8 @@
             @for (service of vendor.services; track service) {
               <span class="service-tag">{{ service }}</span>
             }
-          </div>
+          </div>          
         </div>
-
         <button class="action-btn">Contact Vendor</button>
       </div>
     </div>
